@@ -1,0 +1,17 @@
+{
+  "name": "BMICalculator",
+  "displayName": "BMICalculator",
+  "expo": {
+    "name": "BMICalculator",
+    "slug": "BMICalculator",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
