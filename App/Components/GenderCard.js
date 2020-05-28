@@ -8,20 +8,25 @@ class GenderCard extends Component {
         super(props)
     }
 
+    updateGender = () => {
+        alert("button clicked")
+    }
+
     render() {
-        let type = this.props.type
+        let isGenderMale = this.props.isGenderMale
         let imageSource = maleImage
         let gender = "Male"
-        if(type !== "male"){
+        if (!isGenderMale) {
             imageSource = femaleImage
             gender = "Female"
         }
         return (
-            <View style={styles.container}>
-               <Image source={imageSource} style={styles.imageContainer}/>
-              
-               <Text style={styles.genderText}>{gender}</Text>
-            </View>
+            <TouchableOpacity onPress={() => this.updateGender()} style={styles.container}>
+                <View style={styles.container}>
+                    <Image source={imageSource} style={styles.imageContainer} />
+                    <Text style={styles.genderText}>{gender}</Text>
+                </View>
+            </TouchableOpacity>
         )
 
     }

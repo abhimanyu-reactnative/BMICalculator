@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { View, Image, Text, StyleSheet, Slider } from 'react-native'
+import { connect } from 'react-redux'
+import { updateHeight } from '../Actions/ActionEvent'
 
 class Height extends Component {
     constructor(props) {
@@ -9,13 +11,17 @@ class Height extends Component {
         }
     }
 
+    updateHeight = (value) => {
+        this.props.updateHeight(value)
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 <Text style={styles.heightText}>HEIGHT</Text>
                 <View style={styles.valueContainer}>
                     <Text style={styles.valueText}>
-                        {this.state.value}
+                        {this.props.calculatorData.height}
                 </Text>
                     <Text style={styles.cmText}>
                         cm
@@ -23,8 +29,10 @@ class Height extends Component {
                 </View>
                 <Slider
                     style={{ width: "80%" }}
-                    value={this.state.value}
-                    onValueChange={value => this.setState({ value: Math.round(value) })}
+                    // value={this.state.value}
+                    // onValueChange={value => this.setState({ value: Math.round(value) })}
+                    value={this.props.calculatorData.height}
+                    onValueChange={value => this.updateHeight(value)}
                     maximumValue={200}
                     minimumValue={0}
                     maximumTrackTintColor="grey"
@@ -35,8 +43,15 @@ class Height extends Component {
         )
 
     }
-
 }
+
+const mapStateToProps = state => ({
+    calculatorData: state.calculatorData
+})
+
+const mapDispatchToProps = dispatch => ({
+    updateHeight: (value) => dispatch(updateHeight(value)),
+})
 
 const styles = StyleSheet.create({
     container: {
@@ -70,4 +85,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Height
+export default connect(mapStateToProps, mapDispatchToProps)(Height)

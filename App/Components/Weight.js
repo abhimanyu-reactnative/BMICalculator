@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-import {incrementWeight, decrementWeight, incrementAge, decrementAge} from '../Actions/ActionEvent'
+import { incrementWeight, decrementWeight, incrementAge, decrementAge } from '../Actions/ActionEvent'
 
 class Weight extends Component {
     constructor(props) {
@@ -26,20 +26,25 @@ class Weight extends Component {
         if (isWeightComponent) {
             textValue = "WEIGHT"
         }
+       // alert(JSON.stringify(this.props.calculatorData))
         return (
             <View style={styles.container}>
                 <Text style={styles.heightText}>{textValue}</Text>
 
                 <Text style={styles.valueText}>
-                    80
+                    {isWeightComponent ? this.props.calculatorData.weight : this.props.calculatorData.age}
                 </Text>
                 <View style={styles.controllerContainer}>
-                    <View style={styles.operator}>
-                        <Text style={styles.operatorText}>-</Text>
-                    </View>
-                    <View style={styles.operator}>
-                        <Text style={styles.operatorText}>+</Text>
-                    </View>
+                    <TouchableOpacity onPress={isWeightComponent ? () => this.decrementWeight() : () => this.decrementAge()}>
+                        <View style={styles.operator}>
+                            <Text style={styles.operatorText}>-</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={isWeightComponent ? () => this.incrementWeight() : () => this.incrementAge()}>
+                        <View style={styles.operator}>
+                            <Text style={styles.operatorText}>+</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
 
             </View>
@@ -101,4 +106,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps) (Weight)
+export default connect(mapStateToProps, mapDispatchToProps)(Weight)

@@ -17,7 +17,7 @@ class BMICalculator extends Component {
         return (
             <View style={styles.elementsContainer}>
                 <View style={styles.genderContainer}>
-                    <GenderCard type="male"/>
+                    <GenderCard isGenderMale={true}/>
                     <GenderCard/>
                 </View>
                 <View style={styles.heightContainer}>

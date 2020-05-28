@@ -27,31 +27,31 @@ const reducer = (state=initialData, action) => {
         case UPDATE_HEIGHT: {
             return {
                 ...state,
-                height: action.payload,
+                height:  Math.round(action.payload),
             }
         }
         case INCREMENT_WEIGHT: {
             return {
                 ...state,
-                weight: weight + 1
+                weight: state.weight + 1
             }
         }
         case DECREMENT_WEIGHT: {
             return {
                 ...state,
-                weight: weight - 1
+                weight: state.weight - 1
             }
         }
         case INCREMENT_AGE: {
             return {
                 ...state,
-                age: age + 1
+                age: state.age + 1
             }
         }
         case DECREMENT_AGE: {
             return {
                 ...state,
-                age: age - 1
+                age: state.age - 1
             }
         }
         default: return state
