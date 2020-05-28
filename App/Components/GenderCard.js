@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { connect } from 'react-redux'
+import { updateGender } from '../Actions/ActionEvent'
 let maleImage = require('../assets/male.png')
 let femaleImage = require('../assets/female.png')
 
@@ -8,21 +10,27 @@ class GenderCard extends Component {
         super(props)
     }
 
-    updateGender = () => {
-        alert("button clicked")
+    updateGender = (isGenderMale) => {
+        //alert(isGenderMale)
+        this.props.updateGender(isGenderMale)
     }
 
     render() {
-        let isGenderMale = this.props.isGenderMale
+        const { gender, selectedGender } = this.props;
         let imageSource = maleImage
-        let gender = "Male"
-        if (!isGenderMale) {
+        if (gender !== "Male") {
             imageSource = femaleImage
-            gender = "Female"
         }
+        const containerStyle = [
+            styles.container,
+            selectedGender == gender
+                ? styles.containerEnabled
+                : styles.containerDisabled
+        ];
+
         return (
-            <TouchableOpacity onPress={() => this.updateGender()} style={styles.container}>
-                <View style={styles.container}>
+            <TouchableOpacity onPress={() => this.updateGender(gender)} style={styles.container}>
+                <View style={containerStyle}>
                     <Image source={imageSource} style={styles.imageContainer} />
                     <Text style={styles.genderText}>{gender}</Text>
                 </View>
@@ -32,6 +40,11 @@ class GenderCard extends Component {
     }
 
 }
+
+
+const mapDispatchToProps = dispatch => ({
+    updateGender: (value) => dispatch(updateGender(value)),
+})
 
 const styles = StyleSheet.create({
     container: {
@@ -49,7 +62,13 @@ const styles = StyleSheet.create({
         color: "white",
         paddingTop: 20,
         fontWeight: "bold"
+    },
+    containerEnabled: {
+        opacity: 1
+    },
+    containerDisabled: {
+        opacity: 0.5
     }
 })
 
-export default GenderCard
+export default connect(null, mapDispatchToProps)(GenderCard)

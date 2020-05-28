@@ -1,19 +1,18 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 import Home from '../Containers/Home/Home'
+import BMIResult from '../Containers/Home/BMIResult'
 
 
-
-const stackNavigator = createStackNavigator({
+const stackNavigator = createSwitchNavigator({
     Home: {
         screen: Home
+    },
+    BMIResult: {
+        screen: BMIResult
     }
 },
     {
         initialRouteName: "Home",
-        headerMode: 'none',
-        navigationOptions: {
-            headerVisible: false,
-        }
     }
 );
 

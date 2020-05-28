@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import AppBackground from '../../Components/AppBackground'
 import BMICalculator from './BMICalculator'
+let menuImage = require('../../assets/menu.png')
 
 class Home extends Component {
     constructor(props) {
@@ -17,9 +18,12 @@ class Home extends Component {
             <AppBackground>
                 <View style={styles.container}>
                     <View style={styles.topBar}>
-                        <Text style={styles.topBarText} >BMI CALCULATOR</Text>
+                        <Image style={{ width: 20, height: 20 }} source={menuImage} />
+                        <View style={{flex:1, justifyContent:"center", alignItems: "center"}}>
+                            <Text style={styles.topBarText} >BMI CALCULATOR</Text>
+                        </View>
                     </View>
-                    <BMICalculator/>
+                    <BMICalculator />
                 </View>
             </AppBackground>
         )
@@ -36,9 +40,10 @@ const styles = StyleSheet.create({
     topBar: {
         height: 64,
         width: "100%",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         alignItems: "center",
-        //backgroundColor: "#292b34"
+        flexDirection: "row",
+        paddingLeft: 20
     },
     topBarText: {
         fontWeight: "bold",

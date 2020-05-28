@@ -4,7 +4,8 @@ import {
     INCREMENT_WEIGHT,
     DECREMENT_WEIGHT,
     INCREMENT_AGE,
-    DECREMENT_AGE
+    DECREMENT_AGE,
+    CALCULATE_BMI
 } from './ActionType'
 
 export const updateGender = (value) => {
@@ -42,5 +43,11 @@ export const incrementAge = () => {
 export const decrementAge = () => {
     return {
         type: DECREMENT_AGE,
+    }
+}
+
+export const calculateBMI = () => {
+    return {
+        type: CALCULATE_BMI,
     }
 }

@@ -3,38 +3,54 @@ import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import GenderCard from '../../Components/GenderCard'
 import Height from '../../Components/Height'
 import Weight from '../../Components/Weight'
+import { connect } from 'react-redux'
+import { calculateBMI } from '../../Actions/ActionEvent'
+import { withNavigation } from 'react-navigation';
 
 class BMICalculator extends Component {
     constructor(props) {
         super(props)
     }
 
-    componentDidMount() {
-
+    calculateBMI = (navigation) => {
+        this.props.calculateBMI()
+        setTimeout(function(){ navigation.navigate("BMIResult")}, 200);
+        
     }
 
     render() {
+        const { calculatorData } = this.props
+        console.log(calculatorData.gender)
         return (
             <View style={styles.elementsContainer}>
                 <View style={styles.genderContainer}>
-                    <GenderCard isGenderMale={true}/>
-                    <GenderCard/>
+                    <GenderCard gender="Male" selectedGender={calculatorData.gender} />
+                    <GenderCard gender="Female" selectedGender={calculatorData.gender} />
                 </View>
                 <View style={styles.heightContainer}>
-                    <Height/>
+                    <Height />
                 </View>
                 <View style={styles.weightAndAgeContainer}>
-                    <Weight isWeightComponent={true}/>
-                    <Weight/>
+                    <Weight isWeightComponent={true} />
+                    <Weight />
                 </View>
-                <View style={styles.bottomButton}>
-                </View>
+                <TouchableOpacity style={styles.bottomButton} onPress = {() => this.calculateBMI(this.props.navigation)}>
+                    <View style={styles.bottomButton}>
+                    <Text style={styles.recalculateText}>CALCULATE YOUR BMI</Text>
+                    </View>
+                </TouchableOpacity>
             </View>
         )
-
     }
-
 }
+
+const mapStateToProps = state => ({
+    calculatorData: state.calculatorData
+})
+
+const mapDispatchToProps = dispatch => ({
+    calculateBMI: () => dispatch(calculateBMI()),
+})
 
 const styles = StyleSheet.create({
     container: {
@@ -53,7 +69,7 @@ const styles = StyleSheet.create({
         width: "100%"
     },
     boxContainer: {
-        
+
     },
     genderContainer: {
         flex: 0.7,
@@ -78,8 +94,14 @@ const styles = StyleSheet.create({
         bottom: 0,
         left: 0,
         right: 0,
-        position: "absolute"
+        position: "absolute",
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    recalculateText: {
+        fontSize: 16,
+        color: "white"
     }
 })
 
-export default BMICalculator
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(BMICalculator))
