@@ -6,9 +6,6 @@ import { updateHeight } from '../Actions/ActionEvent'
 class Height extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            value: 0
-        }
     }
 
     updateHeight = (value) => {
@@ -29,11 +26,9 @@ class Height extends Component {
                 </View>
                 <Slider
                     style={{ width: "80%" }}
-                    // value={this.state.value}
-                    // onValueChange={value => this.setState({ value: Math.round(value) })}
                     value={this.props.calculatorData.height}
                     onValueChange={value => this.updateHeight(value)}
-                    maximumValue={200}
+                    maximumValue={220}
                     minimumValue={0}
                     maximumTrackTintColor="grey"
                     minimumTrackTintColor="white"

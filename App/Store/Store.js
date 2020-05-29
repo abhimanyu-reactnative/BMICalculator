@@ -6,7 +6,7 @@ import rootReducer from "../Reducers/rootReducer"
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
-    //whitelist: ['favorites']
+    whitelist: ['calculatorData']
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 

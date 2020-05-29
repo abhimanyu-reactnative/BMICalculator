@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import AppBackground from '../../Components/AppBackground'
+import NavigationBar from '../../Components/NavigationBar'
 
 class BMIResult extends Component {
     constructor(props) {
@@ -27,9 +28,7 @@ class BMIResult extends Component {
         return (
             <AppBackground>
                 <View style={styles.container}>
-                    <View style={styles.topBar}>
-                        <Text style={styles.topBarText} >BMI CALCULATOR</Text>
-                    </View>
+                    <NavigationBar/>
                     <View style={styles.resultContainer}>
                         <View style={styles.yourResultTextContainer}>
                             <Text style={styles.yourResultText}>Your Result</Text>
@@ -72,18 +71,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center"
-    },
-    topBar: {
-        height: 64,
-        width: "100%",
-        justifyContent: "center",
-        alignItems: "center",
-        //backgroundColor: "#292b34"
-    },
-    topBarText: {
-        fontWeight: "bold",
-        color: "white",
-
     },
     yourResultTextContainer: {
         flex: 0.13,
