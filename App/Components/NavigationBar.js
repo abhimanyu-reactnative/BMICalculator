@@ -8,11 +8,11 @@ class NavigationBar extends Component {
     }
     render() {
         return (
-            <View style={styles.topBar}>
+            <View style={styles.topBar}>           
                 <Image style={{ width: 20, height: 20 }} source={menuImage} />
                 <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
                     <Text style={styles.topBarText} >BMI CALCULATOR</Text>
-                </View>
+                </View>               
             </View>
         )
     }
@@ -27,7 +27,9 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         alignItems: "center",
         flexDirection: "row",
-        paddingLeft: 20
+        paddingLeft: 20,
+        overflow: 'hidden', 
+        paddingBottom: 5
     },
     topBarText: {
         fontWeight: "bold",

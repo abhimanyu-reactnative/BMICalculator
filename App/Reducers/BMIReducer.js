@@ -41,6 +41,9 @@ const reducer = (state = initialData, action) => {
             }
         }
         case DECREMENT_WEIGHT: {
+            if(state.weight === 0){
+                return state
+            }
             return {
                 ...state,
                 weight: state.weight - 1
@@ -53,6 +56,9 @@ const reducer = (state = initialData, action) => {
             }
         }
         case DECREMENT_AGE: {
+            if(state.age === 0){
+                return state
+            }
             return {
                 ...state,
                 age: state.age - 1
