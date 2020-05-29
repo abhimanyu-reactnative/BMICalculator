@@ -40,7 +40,7 @@ class BMIResult extends Component {
                                 <Text style={styles.bmiRangeText}>Normal BMI range:</Text>
                                 <Text style={styles.bmiRangeValueText}>18.5 - 25 kg/m2</Text>
                             </View>
-                            <View style={{ justifyContent: "center", paddingBottom: 30 }}>
+                            <View style={{ justifyContent: "center", paddingBottom: 20 }}>
                                 <Text style={styles.messageText}>{calculatorData.message}</Text>
                             </View>
                             <TouchableOpacity style={styles.saveButton} onPress={()=>{alert("Result saved")}}>

@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 18,
         opacity: 0.5,
-        paddingTop: 30,
+        paddingTop: 10,
         paddingBottom: 6
     },
     controllerContainer: {

@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     genderText: {
         fontSize: 20,
         color: "white",
-        paddingTop: 20,
+        paddingTop: 5,
         fontWeight: "bold"
     },
     containerEnabled: {
